@@ -63,6 +63,7 @@ class JooxIE(InfoExtractor):
         song_title = song_json.get('msong')
         duration = song_json.get('minterval')
         album_thumbnail = song_json.get('album_url')
+        album_name = song_json.get('malbum')
         size128 = song_json.get('size128')
         size320 = song_json.get('size320')
         singer = song_json.get('singer_list')
@@ -82,9 +83,11 @@ class JooxIE(InfoExtractor):
         return {
             'id': song_id,
             'title': song_title,
+            'album': album_name,
             'formats': formats,
             'thumbnail': album_thumbnail,
             'release_date': publish_time,
+            'date': publish_time,
             'duration': int(duration),
             'artist': singer,
         }
